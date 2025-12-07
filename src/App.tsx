@@ -1,13 +1,17 @@
 import React from "react";
-
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Category from "./components/Category";
 import Category2 from "./components/Category2";
 import Services from "./components/Services";
 import Banner from "./components/Banner";
-
+import Products from "./components/Products";
 import headphone from "./assets/website/ear.jpg";
+import CartPage from "./pages/CartPage";
+import { Toaster } from "react-hot-toast";
+import TopProducts from "./components/TopProduct";
+import Blogs from "./components/Blog";
 
 const BannerData = {
   discount: "30% OFF",
@@ -20,17 +24,30 @@ const BannerData = {
   bgColor: "#f42c37",
 };
 
+
 const App = () => {
   return (
-    <div>
+    <>
       <Navbar />
-      <Hero />
-      <Category />
-      <Category2 />
-      <Services />
-      <Banner data={BannerData}/>
-    </div>
-  ); 
+      <Toaster position="top-center" reverseOrder={false} />
+
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Hero />
+            <Category />
+            <Category2 />
+            <Services />
+            <Banner data={BannerData} />
+            <Products searchTerm={""} />
+            <TopProducts />
+            <Blogs/>
+          </>
+        } />
+        <Route path="/cart" element={<CartPage />} />
+      </Routes>
+    </>
+  );
 };
 
 export default App;

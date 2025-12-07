@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer components {
   .search-bar {
     @apply w-0 group-hover:w-[300px] transition-all duration-300
